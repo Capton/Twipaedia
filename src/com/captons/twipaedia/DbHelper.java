@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class DbHelper extends SQLiteOpenHelper {
     static final String DB_NAME = "twipaedia.db";
-    static final String DB_PATH = "data/data/com.captons.twipaedia/databases";
+    static final String DB_PATH = "data/data/com.captons.twipaedia/databases/";
     static final int DB_VERSION = 1;
     final Context myContext;
     SQLiteDatabase myDataBase;
@@ -28,12 +28,16 @@ public class DbHelper extends SQLiteOpenHelper {
         this.myContext = context;
     }
 
-    public void createDataBase() throws IOException {
+    public Cursor dbQuery(String $query){
+        return myDataBase.rawQuery($query, null);
+    }
+
+    public void createDataBase() throws IOException, SQLException {
 
         boolean dbExist = checkDataBase();
 
         if(dbExist){
-            //do nothing - database already exist
+
         }else{
 
             //By calling this method and empty database will be created into the default system path

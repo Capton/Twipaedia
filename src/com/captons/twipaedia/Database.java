@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -14,36 +15,44 @@ import java.util.ArrayList;
 public class Database {
 
     static ArrayList<String> wordList = new ArrayList<String>() ;
+    static ArrayList<String> wordIdList = new ArrayList<String>();
     static ArrayList<String> definitionList = new ArrayList<String>() ;
     static final String DB_NAME = "twipaedia.db";
     static final int DB_VERSION = 1;
     DbHelper dbHelper;
     SQLiteDatabase db;
+    Context myContext;
+    int numOfWords;
 
     public Database(Context context){
-        dbHelper = new DbHelper(context);
+
+        this.myContext = context;
     }
 
-    void open() throws android.database.SQLException{
-        db = dbHelper.getReadableDatabase();
+    public void
+    open() throws IOException, SQLException {
+        dbHelper = new DbHelper(this.myContext);
+        dbHelper.createDataBase();
+        dbHelper.openDataBase();
+        loadDatabase();
     }
-    public void close() {
+
+    public void close()
+    {
         dbHelper.close();
     }
 
-    public int getWordList(){
-        Cursor cursor = db.rawQuery("SELECT word FROM local_word", null);
-        //cursor.moveToFirst();
-        int count = 0;
-        /*
+    public void loadDatabase(){
+        Cursor cursor = dbHelper.dbQuery("SELECT * FROM local_word");
+
+        cursor.moveToFirst();
+        numOfWords = 0;
         while (!cursor.isAfterLast()) {
-            //String $word = cursor.getString(1).toString();
-            //wordList.add($word);
-            count++;
+            wordIdList.add(cursor.getString(0).toString());
+            wordList.add(cursor.getString(1).toString());
+            numOfWords++;
             cursor.moveToNext();
         }
-        */
-        return count;
     }
 
 

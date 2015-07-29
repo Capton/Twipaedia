@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -18,24 +20,25 @@ public class Mainpage extends FragmentActivity implements WordListFragment.ViewW
     ListView listView;
     ArrayList<String> wordList = new ArrayList<String>();
     FragmentTransaction fragmentTransaction;
-    Database database;
+    Database db;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainpage_layout);
 
-        //database = new Database(this);
-        //database.open();
-        //int count = database.getWordList();
-        Database.setWordList();
-        Database.setDefinitionList();
-        addDefaultFragment();
+        db = new Database(this);
+        try {
+            db.open();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        addWordListFragment();
     }
 
     @Override
     public void onListitemClick(int position) {
-        //wordDefinitionFragment.definitionView.setText(Database.definitionList.get(position).toString());
-        //Toast.makeText(getApplicationContext(), Database.definitionList.get(position).toString(), Toast.LENGTH_SHORT).show();
         wordDefinitionFragment = new WordDefinitionFragment();
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         Bundle bundle = new Bundle();
@@ -46,7 +49,7 @@ public class Mainpage extends FragmentActivity implements WordListFragment.ViewW
         fragmentTransaction.commit();
     }
 
-    private void addDefaultFragment() {
+    private void addWordListFragment() {
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.fragment_frame, new WordListFragment()).commit();
     }
