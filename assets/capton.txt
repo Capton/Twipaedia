@@ -1,0 +1,49 @@
+<LinearLayout
+            android:id="@+id/header2"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50px"
+            android:background="@android:color/white"
+            >
+        <TextView
+                android:id="@+id/activity_title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal">
+        <ImageButton
+                android:id="@+id/1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+        <ImageButton
+                android:id="@+id/2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+        <ImageButton
+                android:id="@+id/3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+        <ImageButton
+                android:id="@+id/4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+        <ImageButton
+                android:id="@+id/5"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+    </LinearLayout>
+    <ListView
+            android:id="@+id/definition_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    </ListView>

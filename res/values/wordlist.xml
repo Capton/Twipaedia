@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="words">
+        <item>first word</item>
+        <item>second word</item>
+        <item>third word</item>
+        <item>fourth word</item>
+        <item>fifth word</item>
+        <item>sixth word</item>
+        <item>seventh word</item>
+        <item>eight word</item>
+        <item>ninth word</item>
+        <item>tenth word</item>
+    </string-array>
+</resources>

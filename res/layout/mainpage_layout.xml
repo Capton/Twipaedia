@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+            android:id="@+id/header"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50px"
+            android:background="@android:color/white"
+            >
+        <TextView
+                android:id="@+id/activity_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                />
+
+    </LinearLayout>
+    <EditText
+            android:id="@+id/searcher"
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:hint="search word here.."
+            android:layout_below="@id/header"
+            android:layout_margin="10px"/>
+    <ImageButton
+            android:id="@+id/search_btn"
+            android:layout_width="70px"
+            android:layout_height="60px"
+            android:layout_below="@+id/header"
+            android:layout_alignRight="@+id/searcher"
+            android:layout_alignTop="@id/searcher"
+            android:layout_alignBottom="@id/searcher"
+            android:layout_margin="10px"/>
+        <FrameLayout
+                android:id="@+id/fragment_frame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/searcher">
+
+        </FrameLayout>
+    <LinearLayout
+            android:id="@+id/footer"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50px"
+            android:background="@android:color/white"
+            android:layout_alignParentBottom="true"
+            android:visibility="invisible">
+
+    </LinearLayout>
+
+</RelativeLayout>
